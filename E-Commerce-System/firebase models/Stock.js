@@ -9,6 +9,12 @@ function addnewstock(crop){
 }
 
 function updatestock(stock){
+    db.collection("students").doc(regno).update({
+       
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+    }); 
 
 }
 
