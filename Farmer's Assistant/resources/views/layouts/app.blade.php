@@ -296,6 +296,19 @@
                         </ul>
                     </li>
 
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-user-circle"></i>
+                            <span>Customers</span>
+                            <span class="pull-right-container">
+                        </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{URL::to('/add-stock')}}"><i class="fa fa-user-plus"></i> Add Customer</a></li>
+                            <li><a href="{{URL::to('/stock-manage')}}"><i class="fa fa-user"></i> Edit Customer</a></li>
+                        </ul>
+                    </li>
+
                     <li>
                         <a href="{{URL::to('/settings')}}">
                         <i class="fa fa-cogs"></i>
@@ -303,6 +316,22 @@
                         <span class="pull-right-container">
                         </span>
                     </a>
+                    </li>
+                    <li>
+                        <a href="{{URL::to('/settings')}}">
+                            <i class="fa fa-cogs"></i>
+                            <span>Reports</span>
+                            <span class="pull-right-container">
+                        </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{URL::to('/settings')}}">
+                            <i class="fa fa-cogs"></i>
+                            <span>Complaints</span>
+                            <span class="pull-right-container">
+                        </span>
+                        </a>
                     </li>
                     <li class="treeview">
                         <a href="#">
