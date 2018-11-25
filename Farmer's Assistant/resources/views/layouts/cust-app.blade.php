@@ -305,7 +305,7 @@
                 </li>
 
                 <li>
-                    <a href="{{URL::to('/complaints')}}">
+                    <a href="{{URL::to('/sendemail')}}">
                         <i class="fa fa-cogs"></i>
                         <span>Complaints</span>
                         <span class="pull-right-container">

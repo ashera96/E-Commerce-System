@@ -37,9 +37,11 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $cnew = new customer;
         $cnew -> firstname = $request -> firstname;
-        $cnew -> lastname = $request -> lastname;
+        $cnew -> email = $request -> email;
         $cnew -> address = $request -> address;
         $cnew -> tp = $request -> tp;
         $cnew -> save();
@@ -83,7 +85,7 @@ class customerController extends Controller
     {
         $cfind = customer::findOrFail($id);
         $cfind -> firstname = $request -> firstname;
-        $cfind -> lastname = $request -> lastname;
+        $cfind -> email = $request -> email;
         $cfind -> address = $request -> address;
         $cfind -> tp = $request -> tp;
         $cfind -> save();
