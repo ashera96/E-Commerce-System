@@ -65,7 +65,7 @@ Route::get('/makepdfpurchase/{ID}', 'StockController@pdf');
 
 Route::resource('customer','customerController');
 
-Route::get('/cust','HomeController@index');
+Route::get('/cust','CustController@index');
 
 //Route::get('customer','customerController@index');
 //Route::get('cust-create','customerController@create');
