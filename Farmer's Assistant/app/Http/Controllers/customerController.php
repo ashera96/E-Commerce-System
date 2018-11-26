@@ -44,6 +44,8 @@ class customerController extends Controller
         $cnew -> email = $request -> email;
         $cnew -> address = $request -> address;
         $cnew -> tp = $request -> tp;
+        $cnew -> username = $request -> username;
+        $cnew -> password = $request -> password;
         $cnew -> save();
         return redirect('customer')->with('status','saved');
     }
@@ -88,6 +90,8 @@ class customerController extends Controller
         $cfind -> email = $request -> email;
         $cfind -> address = $request -> address;
         $cfind -> tp = $request -> tp;
+        $cfind -> username = $request -> username;
+        $cfind -> password = $request -> password;
         $cfind -> save();
         return redirect('customer')->with('status','updated');
         //return redirect('customer/'.$cfind->id.'/edit')->with('status','updated!');
