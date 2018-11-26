@@ -376,7 +376,7 @@
                     window.onload=function(){
                         var chart=new CanvasJS.Chart("chartContainer",{
                             title:{
-                                text:"Graph for income of stock"
+                                text:"Graph for Income of Stock"
                             },
                             data:[
                                 {
