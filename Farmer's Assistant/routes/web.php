@@ -75,19 +75,22 @@ Route::get('/profile','customerController@index');
 Route::get('/complaint','complaintController@index');
 
 Route::get('/sendemail','SendEmailController@index');
-
 Route::post('/sendemail/send','SendEmailController@send');
+
+Route::get('/ordering','OrderingControlller@index');
 
 Route::get('invoice',function(){
     return view('PDF/ pdfstock');
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 Route::get('/login_Registration', function() {
