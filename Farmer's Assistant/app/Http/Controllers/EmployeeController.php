@@ -26,143 +26,90 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $supplyer = Supplyer::all();
+        $employee = Employee::all();
 
 
-        return view('Supplyer',compact('supplyer'));
+        return view('Employee',compact('employee'));
 
     }
-    public function view_supplyer($ID) {
-        $supplyer = Supplyer::find($ID);
-        return $supplyer;
+    public function view_employee($ID) {
+        $employee = Employee::find($ID);
+        return $employee;
     }
     public function update_info(Request $request) {
         $data = array();
         if($request->cat!=-1)
-            $data['type'] = $request->cat;
+            $data['assigned_stock'] = $request->cat;
 
-        $data['contact'] = $request->phone;
-        $data['Adress'] = $request->adress;
         $data['name'] = $request->name;
-        $data['total_balance'] = $request->balance;
-        $data['paid'] = $request->paid;
+        $data['email'] = $request->email;
+        $data['nic'] = $request->nic;
+        $data['address'] = $request->address;
+        $data['contact'] = $request->contact;
 
-        Supplyer::where('id',$request->ID)
+        Employee::where('id',$request->ID)
             ->update($data);
 
 
 
-        Session::put('message','Save information successfully');
+        Session::put('message','Saved Information Successfully');
         return Redirect::back();
     }
-    public function published_supplyer($ID) {
+    public function published_employee($ID) {
 
-        Supplyer::find($ID)->update(['publication_status' => 1]);
+        Employee::find($ID)->update(['publication_status' => 1]);
 
-        return Redirect::to('supplyer');
+        return Redirect::to('employee');
     }
 
-    public function unpublished_supplyer($ID) {
-        Supplyer::find($ID)->update(['publication_status' => 0]);
+    public function unpublished_employee($ID) {
+        Employee::find($ID)->update(['publication_status' => 0]);
 
-        return Redirect::to('supplyer');
+        return Redirect::to('employee');
     }
 
-    public function save_supplyer(Request $request) {
+    public function save_employee(Request $request) {
 
-        $data = new Supplyer();
+        $data = new Employee();
 
         if($request->cat==-1) {
-            Session::put('info', 'Error! please select supplyer type!');
-            return Redirect::to('supplyer');
+            Session::put('info', 'Error! please select the assigned stock!');
+            return Redirect::to('employee');
 
         }
 
-        $data['type'] = $request->cat;
         $data['name'] = $request->name;
-        $data['total_balance'] = $request->balance;
-        $data['paid'] = $request->paid;
-        $data['contact'] = $request->phone;
-        $data['Adress'] = $request->adress;
+        $data['email'] = $request->email;
+        $data['nic'] = $request->nic;
+        $data['address'] = $request->address;
+        $data['contact'] = $request->contact;
+        $data['assigned_stock'] = $request->cat;
         $data['publication_status'] = 1;
 
         $data->save();
 
 
-        Session::put('message', 'Save Information Successfully !');
-        return Redirect::to('supplyer');
+        Session::put('message', 'Saved Information Successfully !');
+        return Redirect::to('employee');
 
     }
-    public function save_supplyerAJAX(Request $request) {
+    public function save_employeeAJAX(Request $request) {
 
-        $data = new Supplyer();
+        $data = new Employee();
 
-        $data['type'] = $request->cat;
         $data['name'] = $request->name;
-        $data['total_balance'] = $request->balance;
-        $data['paid'] = $request->paid;
-        $data['contact'] = $request->phone;
-        $data['Adress'] = $request->address;
+        $data['email'] = $request->email;
+        $data['nic'] = $request->nic;
+        $data['address'] = $request->address;
+        $data['contact'] = $request->contact;
+        $data['assigned_stock'] = $request->cat;
         $data['publication_status'] = 1;
 
         $data->save();
     }
-    public function getAllsupplyer(){
-        $all_published_Supplyer = \App\Supplyer::all()->where('publication_status',1);
-        return $all_published_Supplyer;
-
-    }
-    public function paymentDetails($ID)
-    {
-        $supplyerPayment =  Supplyerpayment::where('boxID',$ID)->with('supplyer')->with('paymentMethod')->get();
-        return $supplyerPayment;
-
-
-    }
-    public function viewPayment()
-    {
-        $stock = StockPurchase::with('supplyer')->orderBy('statusPaid','asc')->get();
-
-        // return $products;
-
-        return view('SupplyerPayment',compact('stock'));
-
-    }
-    public function save_supplyer_payment(Request $request) {
-
-
-        $data = new Supplyerpayment();
-
-        $data['amount'] = $request->data['newpaid'];
-        $data['supplyersID'] = $request->data['supplyerID'];
-        $data['paymentMethod'] = $request->data['paymentMethod'];
-        $data['boxID'] = $request->data['ID'];
-        if($data['remarks']!="")
-            $data['remarks'] = $request->data['remarks'];
-
-        $total_paid = $request->data['paid']+$data['amount'];
-
-        $data->save();
-
-        $supplyerB = Supplyer::find($data['supplyersID']);
-
-        $supplyer = Supplyer::where('id', $data['supplyersID'])
-            ->update(['paid' => $supplyerB->paid+ $data['amount']]);
-
-
-        if($request->data['total']==$total_paid) {
-            $dataStock = array();
-            $dataStock['statusPaid'] = 0;
-
-            StockPurchase::where('boxID',$data['boxID'])->update($dataStock);
-        }
-        else{
-            $dataStock = array();
-            $dataStock['statusPaid'] = -1;
-
-            StockPurchase::where('boxID',$data['boxID'])->update($dataStock);
-        }
-
+    public function getAllemployee(){
+        $all_published_Employee = \App\Employee::all()->where('publication_status',1);
+        return $all_published_Employee;
 
     }
 

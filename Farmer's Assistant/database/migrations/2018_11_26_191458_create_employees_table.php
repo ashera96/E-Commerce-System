@@ -21,6 +21,7 @@ class CreateEmployeesTable extends Migration
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
             $table->string('assigned_stock')->nullable();
+            $table->tinyInteger('publication_status')->default(1);
             $table->timestamps();
         });
     }
