@@ -79,6 +79,8 @@ Route::post('/sendemail/send','SendEmailController@send');
 
 Route::get('/ordering','OrderingControlller@index');
 
+//Route::get('/reports','ReportControlller@index');
+
 Route::get('invoice',function(){
     return view('PDF/ pdfstock');
 });
@@ -98,3 +100,7 @@ Route::get('/login_Registration', function() {
 
 });
 
+Route::get('statistics',[
+    'as'=>'get_statistics',
+    'uses'=>'PagesController@statistics'
+]);
