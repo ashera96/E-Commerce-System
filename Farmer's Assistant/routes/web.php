@@ -13,8 +13,6 @@
 
 
 
-
-
 //stock controller
 Route::get('/', 'StockController@view')->name('stock');
 Route::post('/save-purchase-old-invoice', 'StockController@save_purchaseOLD');
@@ -63,3 +61,37 @@ Route::post('/update-style-info', 'ProductController@update');
 
 
 Route::get('/makepdfpurchase/{ID}', 'StockController@pdf');
+
+
+Route::resource('customer','customerController');
+
+Route::get('/cust','CustController@index');
+
+//Route::get('customer','customerController@index');
+//Route::get('cust-create','customerController@create');
+
+//Customer dashboard
+Route::get('/profile','customerController@index');
+Route::get('/complaint','complaintController@index');
+
+Route::get('/sendemail','SendEmailController@index');
+
+Route::post('/sendemail/send','SendEmailController@send');
+
+Route::get('invoice',function(){
+    return view('PDF/ pdfstock');
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/login_Registration', function() {
+    return view('login_Registration');
+
+});
+
