@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nic');
             $table->string('address')->nullable();
             $table->string('contact')->nullable();
+            $table->string('assigned_stock')->nullable();
             $table->timestamps();
         });
     }
