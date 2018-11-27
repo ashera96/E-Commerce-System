@@ -140,7 +140,7 @@ function getstocks(){
 
 function searchstock(){
     var id= document.getElementById('pid').value
-    db.collection("stock").where("productid", "==", id)
+    db.collection("stock").where("crop", "==", id)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
