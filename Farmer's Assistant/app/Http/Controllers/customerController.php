@@ -45,27 +45,42 @@ class customerController extends Controller
     {
         //echo "kfkhcgsjf";
 
-        $cnew = new customer;
-        $user = new User;
-        $cnew -> firstname = $request -> firstname;
-        $cnew -> email = $request -> email;
-        $cnew -> address = $request -> address;
-        $cnew -> tp = $request -> tp;
-        $user -> email = $request -> email;
-        $user_pw= $request -> password;
-        $cnew_pw= $request -> password;
-        $user -> password = Hash::make($user_pw);
-        $cnew -> password = Hash::make($cnew_pw);
-        $cnew->role_id=2;
-        $user ->role_id=2;
-        $user -> save();
-        $cnew -> save();
-        return redirect('customer')->with('status','saved');
+        /* $cnew = new customer;
+         $cnew -> firstname = $request -> firstname;
+         $cnew -> email = $request -> email;
+         $cnew -> address = $request -> address;
+         $cnew -> tp = $request -> tp;
+         $cnew -> save();
+         return redirect('customer')->with('status','saved');   */
+
+
+         $cnew = new customer;
+         $user = new User;
+         $cnew -> firstname = $request -> firstname;
+         $cnew -> email = $request -> email;
+         $cnew -> address = $request -> address;
+         $cnew -> tp = $request -> tp;
+         $cnew -> username = $request -> username;
+         $cnew -> password = $request -> password;
+         $user -> email = $request -> email;
+         $user_pw= $request -> password;
+         //$cnew_pw= $request -> password;
+         $user -> password = Hash::make($user_pw);
+         //$cnew -> password = Hash::make($cnew_pw);
+         //$cnew->role_id=2;
+         $user ->role_id=2;
+         $user -> save();
+         $cnew -> save();
+         return redirect('customer')->with('status','saved');
+
+         
+
     }
     
     public function reg(Request $request)
     {
-       
+
+
 
         $cnew = new customer;
         $user = new User;
@@ -107,6 +122,7 @@ class customerController extends Controller
         return view('cedit',['customer'=>$cfind]);
 
     }
+
 
     /**
      * Update the specified resource in storage.

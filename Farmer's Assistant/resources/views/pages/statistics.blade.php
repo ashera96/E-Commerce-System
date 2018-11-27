@@ -11,7 +11,7 @@
             window.onload=function(){
                 var chart=new CanvasJS.Chart("chartContainer",{
                     title:{
-                        text:"Annual Revenue of Stock"
+                        text:"Monthly Revenue of Stock"
                     },
                     data:[
                         {

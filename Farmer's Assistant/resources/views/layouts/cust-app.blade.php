@@ -287,7 +287,8 @@
 
 
                 <li>
-                    <a href="{{URL::to('/profile')}}">
+                    <a href="{{URL::to('/customer/2/edit')}}">
+
                         <i class="fa fa-cogs"></i>
                         <span>Manage Profile</span>
                         <span class="pull-right-container">
