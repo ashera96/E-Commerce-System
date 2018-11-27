@@ -73,6 +73,7 @@ class customerController extends Controller
          $cnew -> save();
          return redirect('customer')->with('status','saved');
 
+         
 
     }
     
@@ -121,6 +122,7 @@ class customerController extends Controller
         return view('cedit',['customer'=>$cfind]);
 
     }
+
 
     /**
      * Update the specified resource in storage.
