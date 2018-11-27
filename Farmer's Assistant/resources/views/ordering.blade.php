@@ -7,6 +7,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script> 
 <script src="{{ URL::asset('js/firebase/db.js') }}"></script>
 <script src="{{ URL::asset('js/firebase/order.js') }}"></script>
+
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     
     <script>
@@ -100,7 +101,7 @@
             }
 
         }
-    addtocart();
+ 
     </script>
 
     @if (session('message'))

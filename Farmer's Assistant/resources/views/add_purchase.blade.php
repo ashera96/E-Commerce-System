@@ -97,7 +97,7 @@
 
     function displayStep1() {
         checkBoxID();
-        document.getElementById('display_box').innerHTML = boxID;
+        //document.getElementById('display_box').innerHTML = boxID;
 
     }
 
@@ -520,36 +520,7 @@
                 });
             }
 
-            function SavesupplyerDetails() {
-                var name = document.getElementById("name").value;
-                var cat = document.getElementById("cat").value;
-
-                if (name == "" || cat == -1) {
-                    alert("Please select TYPE or Enter name atleast to add data.")
-                } else {
-                    $.ajax({
-                        data: {
-                            name: document.getElementById("name").value,
-                            address: document.getElementById("address").value,
-                            phone: document.getElementById("phone").value,
-                            balance: document.getElementById("balance").value,
-                            paid: document.getElementById("paid").value,
-                            cat: document.getElementById("cat").value
-                        },
-                        url: '/save-supplyerAJAX',
-                        type: 'POST',
-                        beforeSend: function(request) {
-                            return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-                        },
-                        success: function(response) {
-                            supplyerDetails();
-                            showSnakBar();
-
-
-                        }
-                    });
-                }
-            }
+            
         </script>
 
         @endsection
