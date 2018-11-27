@@ -75,6 +75,8 @@ Route::resource('customer','customerController');
 
 Route::get('/cust','CustController@index');
 
+Route::get('/emp','EmpController@index');
+
 //Route::get('customer','customerController@index');
 //Route::get('cust-create','customerController@create');
 

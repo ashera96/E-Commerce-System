@@ -15,13 +15,13 @@
             <br>
             <table id="productsTBL" class="table table-hover" style="margin-top: 20px">
                 <tr>
-                    <th >First Name</th>
-                    <th >Email</th>
-                    <th >Address</th>
-                    <th>Telephone</th>
-                    <th>Username</th>
+                    <th >NAME</th>
+                    <th >EMAIL</th>
+                    <th >ADDRESS</th>
+                    <th>TELEPHONE</th>
+                    <th>USERNAME</th>
 
-                    <th style="text-align: center">Action</th>
+                    <th style="text-align: center">ACTION</th>
                 </tr>
                 @foreach($customers as $customer)
                     <tr>
