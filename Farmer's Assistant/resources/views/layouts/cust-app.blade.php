@@ -313,6 +313,15 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{URL::to('/ordering')}}">
+                        <i class="fa fa-cogs"></i>
+                        <span>Orders</span>
+                        <span class="pull-right-container">
+                        </span>
+                    </a>
+                </li>
+
 
 
             </ul>
