@@ -11,7 +11,15 @@
 |
 */
 
-
+//employee controller
+Route::get('/employee', 'EmployeeController@index')->name('EmployeeManagement');
+Route::get('/view-employee/{ID}', 'EmployeeController@view_employee');
+Route::post('/update-employee', 'EmployeeController@update_info');
+Route::get('/published-employee/{ID}', 'EmployeeController@published_employee');
+Route::get('/unpublished-employee/{ID}', 'EmployeeController@unpublished_employee');
+Route::post('/save-employee', 'EmployeeController@save_employee');
+Route::get('/getAllemployee', 'EmployeeController@getAllemployee');
+Route::post('/save-employeeAJAX', 'EmployeeController@save_employeeAJAX');
 
 //stock controller
 Route::get('/', 'StockController@view')->name('stock');
@@ -79,6 +87,8 @@ Route::post('/sendemail/send','SendEmailController@send');
 
 Route::get('/ordering','OrderingControlller@index');
 
+//Route::get('/reports','ReportControlller@index');
+
 Route::get('invoice',function(){
     return view('PDF/ pdfstock');
 });
@@ -98,3 +108,7 @@ Route::get('/login_Registration', function() {
 
 });
 
+Route::get('statistics',[
+    'as'=>'get_statistics',
+    'uses'=>'PagesController@statistics'
+]);
