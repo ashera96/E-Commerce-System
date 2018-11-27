@@ -183,7 +183,7 @@
                                 <td>Email</td>
 
 
-                                <td><input type="text" name="email" id="email" /></td>
+                                <td><input type="text" name="email" id="email" required/></td>
 
                             </tr>
                             <tr>
@@ -191,7 +191,7 @@
                                 <td>NIC</td>
 
 
-                                <td><input type="text" name="nic" id="nic" /></td>
+                                <td><input type="text" name="nic" id="nic" required/></td>
 
                             </tr>
                             <tr>
@@ -207,7 +207,7 @@
                                 <td>Contact</td>
 
 
-                                <td><input type="number" name="contact" id="contact" /></td>
+                                <td><input type="number" name="contact" id="contact" required/></td>
 
                             </tr>
                             <tr>
@@ -306,7 +306,7 @@
                                 <td>Contact</td>
 
 
-                                <td><input type="number" name="contact" /></td>
+                                <td><input type="number" name="contact" required/></td>
 
                             </tr>
 
