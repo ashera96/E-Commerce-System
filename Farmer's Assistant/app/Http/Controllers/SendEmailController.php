@@ -23,7 +23,12 @@ class SendEmailController extends Controller
             'message' =>$request->message
 
         );
+
+
+
         Mail::to('anukeshi96@gmail.com')->send(new SendMail($data));
         return back()->with('success','Thank you');
+
+
     }
 }

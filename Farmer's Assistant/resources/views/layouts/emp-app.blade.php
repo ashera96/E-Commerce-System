@@ -76,7 +76,7 @@
             from {
                 bottom: 30px;
                 opacity: 1;
-            }
+            }employee
             to {
                 bottom: 0;
                 opacity: 0;
@@ -218,7 +218,7 @@
         {{-- <span class="logo-mini"><img src="#" width="50px" height="40px"></span> --}}
 
         <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg">Anushka</b></span>
+            <span class="logo-lg"><strong>Employee</strong></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -239,11 +239,12 @@
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
+
                                 <img src="{{URL::asset('employee_images/admin_image.png')}}" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Anushka
-                                    <small>Logout</small>
+                                    Employee
+                                    <small><a style="color: #00A6C7;" href="#">Logout</a></small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -271,11 +272,12 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
+                    <i class="fas fa-user-cog"></i>
                     <img src="{{URL::asset('employee_images/admin_image.png')}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Sangit</p>
-                    <small>Developer</small>
+                    <p>Employee</p>
+                    <small>System User</small>
 
                 </div>
             </div>
@@ -286,37 +288,19 @@
 
 
 
+
                 <li>
-                    <a href="{{URL::to('/profile')}}">
+                    <a href="{{URL::to('/settings')}}">
                         <i class="fa fa-cogs"></i>
                         <span>Manage Profile</span>
                         <span class="pull-right-container">
                         </span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="{{URL::to('/purchase')}}">
-                        <i class="fa fa-cogs"></i>
-                        <span>Purchases</span>
-                        <span class="pull-right-container">
-                        </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{URL::to('/sendemail')}}">
-                        <i class="fa fa-cogs"></i>
-                        <span>Complaints</span>
-                        <span class="pull-right-container">
-                        </span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{{URL::to('/ordering')}}">
-                        <i class="fa fa-cogs"></i>
-                        <span>Orders</span>
+                    <a href="{{URL::to('/employee')}}">
+                        <i class="fa fa-user"></i>
+                        <span>Manage Stock</span>
                         <span class="pull-right-container">
                         </span>
                     </a>
@@ -357,10 +341,10 @@
 
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0 Beta
-        </div>
-        <strong>Copyright &copy; 2018 <a href="https://github.com/sangit0">Sangit</a>.</strong> All rights reserved.
+        {{--<div class="pull-right hidden-xs">--}}
+        {{--<b>Version</b> 1.0 Beta--}}
+        {{--</div>--}}
+        <strong>Copyright &copy; 2018 </strong> All rights reserved.
     </footer>
 
     <!-- Add the sidebar's background. This div must be placed

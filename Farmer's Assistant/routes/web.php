@@ -75,6 +75,8 @@ Route::resource('customer','customerController');
 
 Route::get('/cust','CustController@index');
 
+Route::get('/emp','EmpController@index');
+
 //Route::get('customer','customerController@index');
 //Route::get('cust-create','customerController@create');
 
@@ -112,3 +114,10 @@ Route::get('statistics',[
     'as'=>'get_statistics',
     'uses'=>'PagesController@statistics'
 ]);
+
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::get('/contactUs','customerController@showContactUs')->name('contactus');
+Route::post('/contactUs','ContactUsController@submit')->name('contactUs');
+
+Route::get('/contactUs/sendEmail', 'ContactUsController@submit');
