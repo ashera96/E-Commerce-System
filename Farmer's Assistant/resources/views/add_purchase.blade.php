@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('content') {{--Sangit is author--}}
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script> 
+<script src="{{ URL::asset('js/firebase/db.js') }}"></script>
+<script src="{{ URL::asset('js/firebase/Stock.js') }}"></script>
 <style>
     .stepwizard-step p {
         margin-top: 10px;
@@ -169,8 +174,6 @@
             //console.log(product);
             dataProduct.push(product);
             var sizeRow = dataProduct.length;
-
-
             var table = document.getElementById("hist_table");
 
             var row = table.insertRow(-1);
@@ -306,7 +309,7 @@
 
                                         <tr>
 
-                                            <td><label class="control-label">Purchase ID:</label></td>
+                                            <td><label class="control-label">Stock ID:</label></td>
                                             <td>
 
 
@@ -315,14 +318,7 @@
 
 
                                         </tr>
-                                        <tr>
-                                            <td><label class="control-label">Supplyer:</label></td>
-                                            <td> <select class="form-control select2" id="supplyerId" onchange="supplyercheck(this)" style="width: 100%;">
-                                                <option>Select...</option>
-
-                                            </select>
-                                            </td>
-                                        </tr>
+                                        
 
 
                                         <br>
@@ -340,45 +336,31 @@
                                 <div class="col-md-7">
                                     <table class="table table-hover">
                                         <tr>
-                                            <td><label class="control-label">Brand:</label></td>
-                                            <td> <select class="form-control select2" onchange="getBrand(this)" style="width: 100%;" ;>
-                                                <option>Select...</option>
-                                                <?php
-                                                foreach($all_published_brand as $Pvalue)
-                                                {
-                                                ?>
-                                                <option value="{{$Pvalue->ID}}">{{$Pvalue->name}}</option>
-                                                <?php } ?>
-                                            </select>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
+                                            
                                             <td><label class="control-label">Product:</label></td>
-                                            <td> <input id="product" type="text" required="required" class="form-control" maxlength="50px" placeholder="Enter Product" /></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><label class="control-label">Style</label></td>
-                                            <td> <select class="form-control select2" id="styleID" onchange="getStyle(this)" style="width: 100%;" ;>
-                                                <option value="-1">Select...</option>
-                                                <?php
-                                                foreach($all_published_style as $Pvalue)
-                                                {
-                                                ?>
-                                                <option value="{{$Pvalue->id}}">{{$Pvalue->name}}</option>
-                                                <?php } ?>
+                                            <td> <select class="form-control select2" id="plist" onchange="getBrand(this)" style="width: 100%;" ;>
+                                                <option>Select...</option>
+                                                <script>
+                                                array=["Potatoes","Rice","Dhal"];
+                                                array.forEach(element => {
+                                                    var x = document.getElementById("plist");
+                                                    var option = document.createElement("option");
+                                                    option.text = element;
+                                                    x.add(option);
+                                                });
+                                                
+                                                </script>
+                                                        
                                             </select>
                                             </td>
                                         </tr>
+
+                                        
                                         <tr>
-                                            <td><label class="control-label">Size:</label></td>
-                                            <td> <input id="size" type="text" required="required" class="form-control" maxlength="50px" placeholder="Enter size" /></td>
+                                            <td><label class="control-label">Type:</label></td>
+                                            <td> <input id="type" type="text" required="required" class="form-control" maxlength="50px" placeholder="Enter size" /></td>
                                         </tr>
-                                        <tr>
-                                            <td><label class="control-label">Color:</label></td>
-                                            <td> <input id="color" type="text" required="required" class="form-control" maxlength="50px" placeholder="Enter color" /></td>
-                                        </tr>
+                
                                         <tr>
                                             <td><label class="control-label">Qty:</label></td>
                                             <td> <input id="qty" type="number" required="required" class="form-control" maxlength="50px" placeholder="Enter quantity" /></td>
@@ -387,12 +369,22 @@
                                             <td><label class="control-label">Per price:</label></td>
                                             <td> <input id="price" type="number" required="required" class="form-control" maxlength="50px" placeholder="Enter price" /></td>
                                         </tr>
+                                        <tr>
+                                                <td><label class="control-label">Produced date:</label></td>
+                                                <td> <input id="pdate" type="date" required="required" class="form-control" maxlength="50px"  /></td>
+                                            </tr>
+
+                                        <br>
+                                        <tr>
+                                                <td><label class="control-label">Expire date:</label></td>
+                                                <td> <input id="edate" type="date" required="required" class="form-control" maxlength="50px"  /></td>
+                                            </tr>
 
                                         <br>
 
                                     </table>
                                     <br>
-                                    <button class="btn btn-primary btn-md pull-left" onclick="addData();" type="button"><i class="fa fa-plus-circle"></i> Add</button>
+                                    <button class="btn btn-primary btn-md pull-left" onclick="addnewstock();" type="button"><i class="fa fa-plus-circle"></i> Add</button>
                                 </div>
                             </div>
                         </div>
@@ -599,12 +591,7 @@
                         isValid = true;
                     // console.log(curStepBtn);
 
-                    if (curStepBtn == "step-1") {
-                        if (alert_supplier == -1) {
-                            isValid = false;
-                            alert("Supplyer not selected");
-                        }
-                    }
+                    
 
 
                     $("td").removeClass("has-error");
