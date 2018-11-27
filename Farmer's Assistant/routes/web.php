@@ -11,8 +11,6 @@
 |
 */
 
-<<<<<<< HEAD
-=======
 //employee controller
 Route::get('/employee', 'EmployeeController@index')->name('EmployeeManagement');
 Route::get('/view-employee/{ID}', 'EmployeeController@view_employee');
@@ -22,7 +20,6 @@ Route::get('/unpublished-employee/{ID}', 'EmployeeController@unpublished_employe
 Route::post('/save-employee', 'EmployeeController@save_employee');
 Route::get('/getAllemployee', 'EmployeeController@getAllemployee');
 Route::post('/save-employeeAJAX', 'EmployeeController@save_employeeAJAX');
->>>>>>> c761d606c6569cf4c48bfcb76870966ad217db6d
 
 //stock controller
 Route::get('/', 'StockController@view')->name('stock');

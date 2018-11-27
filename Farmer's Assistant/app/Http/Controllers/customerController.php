@@ -47,16 +47,11 @@ class customerController extends Controller
         $cnew -> email = $request -> email;
         $cnew -> address = $request -> address;
         $cnew -> tp = $request -> tp;
-<<<<<<< HEAD
         $user -> email = $request -> email;
         $user_pw= $request -> password;
         $user -> password = Hash::make($user_pw);
         $user ->role_id=2;
         $user -> save();
-=======
-        $cnew -> username = $request -> username;
-        $cnew -> password = $request -> password;
->>>>>>> c761d606c6569cf4c48bfcb76870966ad217db6d
         $cnew -> save();
         return redirect('customer')->with('status','saved');
     }
