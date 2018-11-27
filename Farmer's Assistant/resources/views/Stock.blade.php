@@ -194,17 +194,17 @@
                     @slot('tableID') productsDetails
                     @endslot
                     @slot('head')
-                    <th><i class="fa fa-sort"></i> Product(Qty.)</th>
-                    <th><i class="fa fa-sort"></i> Available </th>
-                    <th><i class="fa fa-sort"></i> Style </th>
-                    <th><i class="fa fa-sort"></i> Brand </th>
-
+                    <th><i class="fa fa-sort"></i> Crop</th>
+                    <th><i class="fa fa-sort"></i> Type </th>
+                    <th><i class="fa fa-sort"></i> Qty Available</th>
                     <th><i class="fa fa-sort"></i> Price </th>
-                    <th><i class="fa fa-sort"></i> Size </th>
-                    <th><i class="fa fa-sort"></i> Color</th>
-                    <th><i class=""></i> Action</th>
+
+                    <th><i class="fa fa-sort"></i> Produced Date </th>
+                    <th><i class="fa fa-sort"></i> Expire Date </th>
+                    <th><i class="fa fa-sort"></i> Total worth </th>
+                   
                     
-                    <tr> <td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td></tr>
+                    <script>getallstocks()</script>
                     
                     @endslot
                     @endcomponent

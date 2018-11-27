@@ -275,9 +275,7 @@
                 <div class="box-header with-border">
 
                     <h3 class="box-title">Add new products to stock</h3>
-                    <a href="#addSupplyer" role="button" class="btn btn-warning btn-sm  pull-right" title="Add new supplyer" data-toggle="modal"><i class="fa fa-user-plus" ></i></a>
-
-
+                    
 
                     <!-- /.box-tools -->
                 </div>
@@ -338,7 +336,7 @@
                                         <tr>
                                             
                                             <td><label class="control-label">Product:</label></td>
-                                            <td> <select class="form-control select2" id="plist" onchange="getBrand(this)" style="width: 100%;" ;>
+                                            <td> <select class="form-control select2" id="plist"  style="width: 100%;" ;>
                                                 <option>Select...</option>
                                                 <script>
                                                 array=["Potatoes","Rice","Dhal"];
@@ -402,49 +400,23 @@
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header">
-
-                    <h3 class="widget-user-username">Cart</h3>
-                    <h5 class="widget-user-desc">Stock invoice history</h5>
-                    <span class="col-sm-4">
-                             <p class="alert" style="color:black; border:1px solid black;">ID:
-                            <label id="display_box" class="label" style="font-size:13px; color:red;border:1px solid black; border-radious: 10/8px;"> 0 </label>
-
-                              <br>
-                              <br>
-
-
-                            <label class="text-danger" style="font-size:13px;">Supplyer: </label>
-                            <label id="display_supplyer" class="label" style="font-size:13px; color:black; "> Not selected </label>
-                            <br>
-                              <label class="text-danger" style="font-size:13px;">Brand: </label>
-                            <label id="display_brand" class="label" style="font-size:13px; color:black; "> Not selected </label>
-                           <br>
-
-                            <label class="text-danger" style="font-size:13px;">Style: </label>
-                            <label id="display_style" class="label" style="font-size:13px; color:black;border: black 1px solid;border-radius: 10/8px; "> None </label>
-
-
-                             </p></span>
-
-
-                </div>
-                <div class="box-body">
+                
 
                     <table id="hist_table" class="table table-bordered table-hover">
                         <thead>
                             <tr>
 
-                                <th><i class="fa fa-sort"></i> Product </th>
-                                <th><i class="fa fa-sort"></i> Size </th>
+                                <th><i class="fa fa-sort"></i> Crop </th>
+                                <th><i class="fa fa-sort"></i> Type </th>
                                 <th><i class="fa fa-sort"></i> Qty.</th>
-                                <th><i class="fa fa-sort"></i> Price</th>
-                                <th><i class="fa fa-sort"></i> Total price</th>
+                                <th><i class="fa fa-sort"></i> Per Price</th>
+                                <th><i class="fa fa-sort"></i> Produced Date</th>
+                                <th><i class="fa fa-sort"></i> Expired Date</th>
                                 <th><i class="fa fa-sort"></i> Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                                <script>getstocks()</script>
 
 
                         </tbody>
@@ -461,103 +433,7 @@
         </div>
 
         {{--Customer-ads shortcut--}}
-        <div class="modal fade" id="addSupplyer">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">Add new supplyer</h4>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table">
-
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td>Select type:</td>
-
-
-                                    <td><select id="cat" required>
-                                <option value="-1">Select...</option>
-
-                                <option value="0">Export</option>
-                                <option value="1">Local</option>
-
-                            </select></td>
-
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Name</td>
-
-
-                                    <td><input type="text" id="name" required/></td>
-
-                                </tr>
-
-
-                                <tr>
-                                    <td></td>
-                                    <td>Address</td>
-
-
-                                    <td><input type="text" id="address" /></td>
-
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Contact</td>
-
-
-                                    <td><input type="number" id="phone" /></td>
-
-                                </tr>
-
-                                <tr>
-                                    <td></td>
-                                    <td>Balance</td>
-
-
-                                    <td><input type="number" id="balance" value="0" id="balance" /></td>
-
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Paid balance</td>
-
-
-                                    <td><input type="number" id="paid" value="0" id="paid" /></td>
-
-                                </tr>
-                                <tr>
-                                    <td></td>
-
-                                    <td>
-                                        <button type="submit" onclick="SavesupplyerDetails()" data-dismiss="modal" class="btn btn-success btn-sm">SAVE</button>
-                                    </td>
-                                    <td></td>
-
-                                </tr>
-
-
-
-
-                            </tbody>
-
-
-
-                        </table>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-            <!-- /.modal-dialog -->
-        </div>
+        
 
         <script>
             $(document).ready(function() {
