@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user_login_app')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action = "{{ action('customerController@store') }}">
+                    <form class="form-horizontal" method="POST" action = "{{url('user_registration')}}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">

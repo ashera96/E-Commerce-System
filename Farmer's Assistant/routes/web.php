@@ -101,7 +101,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::post('/user_registration','customerController@reg')->name('user_registration');
 
 Route::get('/login_Registration', function() {
     return view('login_Registration');

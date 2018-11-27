@@ -50,6 +50,7 @@ class customerController extends Controller
         $user -> email = $request -> email;
         $user_pw= $request -> password;
         $user -> password = Hash::make($user_pw);
+        $cnew->role_id=2;
         $user ->role_id=2;
         $user -> save();
         $cnew -> save();
@@ -58,7 +59,7 @@ class customerController extends Controller
 
     public function reg(Request $request)
     {
-        //echo "kfkhcgsjf";
+       
 
         $cnew = new customer;
         $user = new User;
@@ -69,6 +70,7 @@ class customerController extends Controller
         $user -> email = $request -> email;
         $user_pw= $request -> password;
         $user -> password = Hash::make($user_pw);
+        $cnew ->role_id=2;
         $user ->role_id=2;
         $user -> save();
         $cnew -> save();
