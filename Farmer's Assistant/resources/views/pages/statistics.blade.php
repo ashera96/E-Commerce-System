@@ -3,8 +3,11 @@
 @section('content')
 
     <head>
+
         <script src="js/canvasjs.min.js"></script>
         <script type="text/javascript">
+
+
             window.onload=function(){
                 var chart=new CanvasJS.Chart("chartContainer",{
                     title:{
