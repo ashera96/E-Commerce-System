@@ -326,7 +326,7 @@
                     </li>
 
                     <li>
-                        <a href="{{URL::to('/settings')}}">
+                        <a href="{{URL::to('/statistics')}}">
                             <i class="fa fa-cogs"></i>
                             <span>Reports</span>
                             <span class="pull-right-container">
@@ -334,7 +334,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{URL::to('/settings')}}">
+                        <a href="{{URL::to('/sendemail')}}">
                             <i class="fa fa-cogs"></i>
                             <span>Complaints</span>
                             <span class="pull-right-container">

@@ -409,8 +409,20 @@
                                 </div>
                                 <div class="input-field col s6">
                                     <i class="material-icons prefix">phone</i>
-                                    <input id="telephone" type="tel" class="validate" name="tp" value="{{ $customer->tp }}">
+                                    <input id="telephone" type="tel" class="validate" name="tp" value="{{ $customer->tp }}" >
                                     <label for="telephone">Telephone</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">home</i>
+                                    <input id="username" type="text" class="validate" name="username" value="{{ $customer->username }}" readonly>
+                                    <label for="username">Username</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input id="password" type="password" class="validate" name="password" value="{{ $customer->password }}" readonly >
+                                    <label for="password">Password</label>
                                 </div>
                             </div>
                             <input type="submit" name="submit" class="btn blue right" value="Update">

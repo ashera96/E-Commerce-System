@@ -387,6 +387,8 @@
                             <th>Email</th>
                             <th>Address</th>
                             <th>Telephone</th>
+                            <th>Username</th>
+
                             <th>Action</th>
                         </tr>
                         @foreach($customers as $customer)
@@ -395,6 +397,8 @@
                                 <td>{{ $customer->email }}</td>
                                 <td>{{ $customer->address }}</td>
                                 <td>{{ $customer->tp }}</td>
+                                <td>{{ $customer->username }}</td>
+
                                 <td>
                                     <div class="row"><div class="col">
                                             <a href="{{url('customer/'.$customer->id.'/edit')}}"><button class="btn btn-small blue">Edit</button></a>

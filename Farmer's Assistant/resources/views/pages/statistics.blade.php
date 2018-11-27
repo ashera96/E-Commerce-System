@@ -16,10 +16,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/everythingSangitCSS.css')}}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
     <style>
         #snackbar {
             visibility: hidden;
@@ -275,7 +271,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="../employee_images/photo_default_emplyee1.png" class="img-circle" alt="User Image">
+                    <img src="employee_images/photo_default_emplyee1.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>Sangit</p>
@@ -284,7 +280,7 @@
                 </div>
             </div>
 
-            <ul class="sidebar-menu " data-widget="tree">
+            <ul class="sidebar-menu" data-widget="tree">
 
 
                 <li class="treeview">
@@ -321,7 +317,7 @@
                 </li>
 
                 <li>
-                    <a href="{{URL::to('/settings')}}">
+                    <a href="{{URL::to('/reports')}}">
                         <i class="fa fa-cogs"></i>
                         <span>Reports</span>
                         <span class="pull-right-container">
@@ -329,7 +325,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{URL::to('/sendemail')}}">
+                    <a href="{{URL::to('/settings')}}">
                         <i class="fa fa-cogs"></i>
                         <span>Complaints</span>
                         <span class="pull-right-container">
@@ -374,79 +370,40 @@
 
 
 
-
-            <div class="container" style="width: 1000px">
-                <div class = "card-panel cyan darken-4"  ><h3 style="text-align: center;color: white">Add New Customer</h3></div>
-
-
-
-                <div class = "card-panel center">
-                    <div class="row">
-                        <form class="col s12" method="POST" action="{{url('/customer')}}">
-                            {{ csrf_field() }}
-                            <div class="row">
-
-                                <div class="input-field col s6">
-                                    <!--<i class="material-icons prefix" >account_circle</i>-->
-                                    <input id="firstname" type="text" class="form-control{{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" value="{{ old('firstname') }}" required autofocus>
-                                    <label for="firstname">Name</label>
-
-                                </div>
-                                <div class="input-field col s6">
-                                    <!--<i class="material-icons prefix">account_circle</i>-->
-                                    <input id="email" type="email"   class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-                                    <label for="email">Email</label>
+            <head>
+                <script src="js/canvasjs.min.js"></script>
+                <script type="text/javascript">
+                    window.onload=function(){
+                        var chart=new CanvasJS.Chart("chartContainer",{
+                            title:{
+                                text:"Annual Revenue of Stock"
+                            },
+                            data:[
+                                {
+                                    type:"column",
+                                    dataPoints:[
 
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <!-- <i class="material-icons prefix">home</i> -->
+                                        <?php
 
-                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                                        foreach ($data as $rows){
+                                            echo "{label:'{$rows->product}',y:{$rows->amount}},\r\n";
+                                        }
 
-                                    <label for="address">Address</label>
+                                        ?>
+                                    ]
+                                }
+                            ]
+                        });
+                        chart.render();
+                    }
+                </script>
+            </head>
+            <body>
+            <div id="chartContainer" style="height:400px; width:60%;"></div>
+            </body>
 
-                                </div>
-                                <div class="input-field col s6">
-                                    <!--<i class="material-icons prefix">phone</i>-->
-
-                                    <input id="telephone" pattern="[0]{1}[1-9]{2}[0-9]{7}" minlength="10" type="text" class="form-control{{ $errors->has('tp') ? ' is-invalid' : '' }}" name="tp" value="{{ old('tp') }}" required autofocus>
-
-                                    <label for="telephone">Telephone</label>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <!-- <i class="material-icons prefix">home</i> -->
-
-                                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
-
-                                    <label for="username">Username</label>
-
-                                </div>
-                                <div class="input-field col s6">
-                                    <!--<i class="material-icons prefix">phone</i>-->
-
-                                    <input id="password"  type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old('password') }}" required autofocus>
-
-                                    <label for="password">Password</label>
-
-                                </div>
-                            </div>
-                            <input type="submit" name="submit" class="btn blue right" value="Save">
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-
-
-
-
+            </html>
 
 
         </section>
