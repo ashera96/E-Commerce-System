@@ -8,7 +8,7 @@
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="/css/fonts.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- Main css -->
     <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -22,21 +22,21 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form">
+                        <form method="POST" class="register-form" route={{}} id="register-form">
                             <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account"></i></label>
+                                <label for="name"><i class="fa fa-user"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <label for="email"><i class="fa fa-at"></i></label>
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="pass"><i class="fa fa-key"></i></label>
                                 <input type="password" name="pass" id="pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <label for="re-pass"><i class="fa fa-key"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
                             </div>
                             <div class="form-group">
@@ -66,14 +66,14 @@
                     </div>
 
                     <div class="signin-form">
-                        <h2 class="form-title">Sign up</h2>
+                        <h2 class="form-title">Sign in</h2>
                         <form method="POST" class="register-form" id="login-form">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <label for="your_name"><i class="fa fa-at"></i></label>
                                 <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="your_pass"><i class="fa fa-key"></i></label>
                                 <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
@@ -87,11 +87,12 @@
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">
-                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
                                 <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
                             </ul>
                         </div>
+                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
                     </div>
                 </div>
             </div>

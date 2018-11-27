@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\customer;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class customerController extends Controller
 {
@@ -37,17 +39,41 @@ class customerController extends Controller
      */
     public function store(Request $request)
     {
-
+        //echo "kfkhcgsjf";
 
         $cnew = new customer;
+        $user = new User;
         $cnew -> firstname = $request -> firstname;
         $cnew -> email = $request -> email;
         $cnew -> address = $request -> address;
         $cnew -> tp = $request -> tp;
+        $user -> email = $request -> email;
+        $user_pw= $request -> password;
+        $user -> password = Hash::make($user_pw);
+        $user ->role_id=2;
+        $user -> save();
         $cnew -> save();
         return redirect('customer')->with('status','saved');
     }
 
+    public function reg(Request $request)
+    {
+        //echo "kfkhcgsjf";
+
+        $cnew = new customer;
+        $user = new User;
+        $cnew -> firstname = $request -> firstname;
+        $cnew -> email = $request -> email;
+        $cnew -> address = $request -> address;
+        $cnew -> tp = $request -> tp;
+        $user -> email = $request -> email;
+        $user_pw= $request -> password;
+        $user -> password = Hash::make($user_pw);
+        $user ->role_id=2;
+        $user -> save();
+        $cnew -> save();
+        return redirect('home');
+    }
     /**
      * Display the specified resource.
      *

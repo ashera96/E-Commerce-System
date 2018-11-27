@@ -12,7 +12,6 @@
 */
 
 
-
 //stock controller
 Route::get('/', 'StockController@view')->name('stock');
 Route::post('/save-purchase-old-invoice', 'StockController@save_purchaseOLD');
