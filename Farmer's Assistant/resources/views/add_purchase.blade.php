@@ -423,7 +423,7 @@
 
                     </table>
                     <br>
-                    <button class="btn btn-sm btn-danger" onclick="saveStockData()">Save all data</button>
+                    <button class="btn btn-sm btn-danger" onclick="updatestock()">Save all data</button>
 
 
                 </div>

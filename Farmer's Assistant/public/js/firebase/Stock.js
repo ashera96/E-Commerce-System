@@ -38,7 +38,7 @@ function addnewstock(){
                     cell5.innerHTML = "<input type='date'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='pdate' value='" + pdate + "' style='width:90%'>";
                     cell6.innerHTML = "<input type='date'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='edate' value='" + edate + "' style='width:90%'>";
                     cell7.innerHTML = s;
-                    document.getElementById('boxID').value=parseInt(document.getElementById('boxID').value)+1;
+                    document.getElementById('boxID').value=(parseInt(document.getElementById('boxID').value)+1);
        console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
@@ -47,13 +47,37 @@ function addnewstock(){
 }
 }
 
-function updatestock(stock){
-    db.collection("students").doc(regno).update({
-       
-    })
-    .then(function() {
-        console.log("Document successfully updated!");
-    }); 
+function updatestock(){
+    
+        var myTab = document.getElementById('hist_table');
+
+        // LOOP THROUGH EACH ROW OF THE TABLE AFTER HEADER.
+        for (i = 1; i < myTab.rows.length; i++) {
+
+            // GET THE CELLS COLLECTION OF THE CURRENT ROW.
+            var objCells = myTab.rows.item(i).cells;
+
+            // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
+            
+                //console.log(objCells.item(1).children[0].value);
+                db.collection("stock").doc(id).update({
+                    crop: objCells.item(0).children[0].value,
+                    type:objCells.item(1).children[0].value,
+                    quantity:objCells.item(2).children[0].value,
+                    perprice:objCells.item(3).children[0].value,
+                    produceddate:objCells.item(4).children[0].value,
+                    expiredate:objCells.item(5).children[0].value     
+                })
+                .then(function() {
+                    console.log("Document successfully updated!");
+                });
+            
+            
+        }
+
+
+
+    
 
 }
 
