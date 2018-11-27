@@ -85,6 +85,7 @@ class EmployeeController extends Controller
         $data['contact'] = $request->contact;
         $data['assigned_stock'] = $request->cat;
         $data['publication_status'] = 1;
+        $data['role_id']=3;
 
         $data->save();
 

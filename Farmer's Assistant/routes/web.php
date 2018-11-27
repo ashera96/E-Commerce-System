@@ -112,3 +112,10 @@ Route::get('statistics',[
     'as'=>'get_statistics',
     'uses'=>'PagesController@statistics'
 ]);
+
+Route::post('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::get('/contactUs','customerController@showContactUs')->name('contactus');
+Route::post('/contactUs','ContactUsController@submit')->name('contactUs');
+
+Route::get('/contactUs/sendEmail', 'ContactUsController@submit');
