@@ -9,6 +9,7 @@ var config = {
   };
 firebase.initializeApp(config);
 const db=firebase.firestore();
+console.log("hello");
 db.settings({timestampsInSnapshots:true});
 
 //include these in the html file

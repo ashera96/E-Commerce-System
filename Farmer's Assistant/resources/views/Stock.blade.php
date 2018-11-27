@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-database.js"></script> 
+<script src="{{ URL::asset('js/firebase/db.js') }}"></script>
+<script src="{{ URL::asset('js/firebase/Stock.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+    
     <script>
         var dataToPush = [];
         var row;
@@ -169,59 +175,18 @@
     ?>
             <hr class="alert-info">
             <div class="row">
-                <div class="col-md-5">
-                    <div class="box  box-solid">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Stock</h3>
-                            <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="productsTBL" class="table table-hover">
-                                <thead>
-                                    <tr>
-
-                                        <th><i class="fa fa-sort"></i> ID </th>
-                                        <th><i class="fa fa-sort"></i> Supplier</th>
-                                        <th><i class="fa fa-sort"></i> Date</th>
-
-                                        <th><i class=""></i> Action</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ $product->boxID}}</td>
-                                        <td>{{ $product->supplyer->name}}</td>
-                                        <td>{{ $product->products[0]->created_at->format('d/m/Y')}}</td>
-
-                                        <td>
-                                            <button class="btn btn-primary btn-sm" onclick='getProducts("{{$product->boxID}}","{{$product->supplyer->name}}","{{$product->price}}","{{$product->availableStock}}")'><i class="fa fa-eye"></i> View</button>
-                                            <a href="{{URL::to('/makepdfpurchase/'.$product->boxID)}}" target="_blank"  class="btn btn-danger btn-sm"><i class="fa fa-print"></i></a>
-
-                                        </td>
-                                    </tr>
-                                    @endforeach
-
-                                </tbody>
-
-                            </table>
-
-
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <div class="col-md-7">
+                
+                <div class="col-md-7" style="width: 100%">
                     @component('components.widget')
                     @slot('title') Stock details
                     @endslot
                     @slot('description') Particular products information
                     <br><br>
+                    <input type="text" id="pid" class="" placeholder="Product id">
+                    <input type="button" value="Search" class="btn btn-sm btn-primary" id="submit" onclick="searchstock()">
+                    <input type="button" value="Reset" class="btn btn-sm btn-primary" id="reset" onclick="getallstocks()">
                     <span class="col-sm-7" id="contentInvoice">
-
+                       
                               </span><br>
                     @endslot
                     @slot('body')
@@ -238,6 +203,9 @@
                     <th><i class="fa fa-sort"></i> Size </th>
                     <th><i class="fa fa-sort"></i> Color</th>
                     <th><i class=""></i> Action</th>
+                    
+                    <tr> <td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td><td> ffff</td></tr>
+                    
                     @endslot
                     @endcomponent
                     @endslot
@@ -372,6 +340,15 @@
                         'autoWidth': true
                     })
                 });
+                function createCell(cell, text, style) {
+                    var div = document.createElement('div'), // create DIV element
+                        txt = document.createTextNode(text); // create text node
+                    div.appendChild(txt);                    // append text node to the DIV
+                    div.setAttribute('class', style);        // set DIV class attribute
+                    div.setAttribute('className', style);    // set DIV class attribute for IE (?!)
+                    cell.appendChild(div);                   // append DIV to the table cell
+                }
+                
 
                 function getStyle(ID) {
                     ajaxGet('/get-style', ID);
