@@ -100,7 +100,7 @@
             }
 
         }
-
+    addtocart();
     </script>
 
     @if (session('message'))

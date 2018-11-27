@@ -29,7 +29,8 @@ function getallstocks(){
                     row.insertCell(3).innerHTML = doc.data().perprice;
                     row.insertCell(4).innerHTML = doc.data().produceddate;
                     row.insertCell(5).innerHTML = doc.data().expiredate;
-                    row.insertCell(6).innerHTML='<button class="btn btn-primary btn-sm"  id="'+doc.id  +'" onclick="addtocart();"><i>Add to cart</i></button>'
+                    row.insertCell(6).innerHTML='<button class="btn btn-primary btn-sm" name="buy" id="'+doc.id+'" onclick="addtocart();"><i>Add to cart</i></button>'
+                    
 
                     
 
@@ -41,5 +42,16 @@ function getallstocks(){
         console.log("Error getting documents: ", error);
     });
     
+}
+
+function addtocart(){
+    var buttons = document.getElementsByTagName("button");
+    var buttonsCount = buttons.length;
+    for (var i = 0; i <= buttonsCount; i += 1) {
+        buttons[i].onclick = function(e) {
+            alert(this.id);
+        };
+    }
+
 }
 
