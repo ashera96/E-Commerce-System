@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\customer;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class customerController extends Controller
 {
@@ -54,7 +55,8 @@ class customerController extends Controller
          return redirect('customer')->with('status','saved');   */
 
 
-         $cnew = new customer;
+
+        $cnew = new customer;
          $user = new User;
          $cnew -> firstname = $request -> firstname;
          $cnew -> email = $request -> email;
@@ -71,9 +73,17 @@ class customerController extends Controller
          $user ->role_id=2;
          $user -> save();
          $cnew -> save();
+
+        Session::put('message', 'Saved Information Successfully !');
          return redirect('customer')->with('status','saved');
 
-         
+
+
+
+
+
+
+
 
     }
     

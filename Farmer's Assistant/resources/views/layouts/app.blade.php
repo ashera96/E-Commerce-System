@@ -333,14 +333,7 @@
                         </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{URL::to('/sendemail')}}">
-                            <i class="fa fa-cogs"></i>
-                            <span>Complaints</span>
-                            <span class="pull-right-container">
-                        </span>
-                        </a>
-                    </li>
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-tint"></i>
