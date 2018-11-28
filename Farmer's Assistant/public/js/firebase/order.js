@@ -29,7 +29,7 @@ function getallstocks(){
                     row.insertCell(3).innerHTML = doc.data().perprice;
                     row.insertCell(4).innerHTML = doc.data().produceddate;
                     row.insertCell(5).innerHTML = doc.data().expiredate;
-                    row.insertCell(6).innerHTML='<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPayment" name="buy" id="'+doc.id+'" onclick="addtocart();" type="button">Add to cart</button>'
+                    row.insertCell(6).innerHTML='<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addPayment" name="buy" id="'+doc.id+'" onclick="addtocart(this.id);" type="button">Add to cart</button>'
 
                     
 
