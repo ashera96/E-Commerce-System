@@ -75,6 +75,8 @@ Route::resource('customer','customerController');
 
 Route::get('/cust','CustController@index');
 
+//Route::get('/cust/2/edit','customerController@index2');
+
 Route::get('/emp','EmpController@index');
 
 //Route::get('customer','customerController@index');
@@ -108,6 +110,11 @@ Route::post('/user_registration','customerController@reg')->name('user_registrat
 
 Route::get('/login_Registration', function() {
     return view('login_Registration');
+
+});
+
+Route::get('/logO', function() {
+    return view('auth.login');
 
 });
 

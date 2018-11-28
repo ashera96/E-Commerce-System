@@ -244,7 +244,19 @@
 
                                 <p>
                                     Employee
-                                    <small><a style="color: #00A6C7;" href="#">Logout</a></small>
+                                    
+                                   <small><a style="color: #00A6C7;" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                    >Logout</a></small>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                        <small><a style="color: #00A6C7;" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                    >Logout</a></small>
+                                    </form>
+
                                 </p>
                             </li>
                             <!-- Menu Body -->
