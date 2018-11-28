@@ -44,7 +44,7 @@ function getallstocks(){
     
 }
 
-function addtocart(id){
+function getorders(id){
     console.log(id);
 
 }

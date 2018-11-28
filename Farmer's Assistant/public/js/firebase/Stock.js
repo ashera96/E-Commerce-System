@@ -29,7 +29,7 @@ function addnewstock(){
                    var cell5 = row.insertCell(4);
                    var cell6 = row.insertCell(5);
                    var cell7= row.insertCell(6);
-                    var s = '<button class="btn btn-danger btn-sm" onclick="delete_product(this);"><i class="fa fa-trash-o"></i></button>'
+                    var s = '<button class="btn btn-danger btn-sm" id="'+docRef.id+'" onclick="deletestock(this.id);"><i class="fa fa-trash-o"></i></button>'
                     
                     cell1.innerHTML = "<input type='text'  onkeyup='changeDetect(this,1)' id='pName' value='" + crop + "' style='width:100%';>";
                     cell2.innerHTML = "<input type='text'  onkeyup='changeDetect(this,2)' id='type' value='" + type + "' style='width:70%'>";
@@ -56,28 +56,22 @@ function updatestock(){
 
             // GET THE CELLS COLLECTION OF THE CURRENT ROW.
             var objCells = myTab.rows.item(i).cells;
-
             // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-            
-                //console.log(objCells.item(1).children[0].value);
-                db.collection("stock").doc(id).update({
+                //console.log(objCells.item(6).children[0].id);
+                db.collection("stock").doc(objCells.item(6).children[0].id).update({
                     crop: objCells.item(0).children[0].value,
-                    type:objCells.item(1).children[0].value,
-                    quantity:objCells.item(2).children[0].value,
-                    perprice:objCells.item(3).children[0].value,
-                    produceddate:objCells.item(4).children[0].value,
-                    expiredate:objCells.item(5).children[0].value     
+                    type: objCells.item(1).children[0].value,
+                    quantity: objCells.item(2).children[0].value,
+                    perprice: objCells.item(3).children[0].value,
+                    produceddate: objCells.item(4).children[0].value,
+                    expiredate: objCells.item(5).children[0].value     
                 })
                 .then(function() {
                     console.log("Document successfully updated!");
                 });
-            
-            
+           
         }
-
-
-
-    
+alert("All stocks successfully updated!")
 
 }
 
