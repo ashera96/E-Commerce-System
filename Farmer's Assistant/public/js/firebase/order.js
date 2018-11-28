@@ -43,7 +43,9 @@ function getallstocks(){
     
 }
 
-function addtocart(id){
+
+
+function addtocart() {
     var docRef = db.collection("stock").doc(id);
 
     docRef.get().then(function(doc) {
@@ -57,11 +59,6 @@ function addtocart(id){
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
-
-
-}
-
-function addtocart() {
     var crop = doc.data().crop;
     var type = doc.data().type;
     var price = doc.data().perprice;
