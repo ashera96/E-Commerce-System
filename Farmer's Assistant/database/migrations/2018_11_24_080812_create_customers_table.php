@@ -20,6 +20,7 @@ class CreateCustomersTable extends Migration
             $table->integer('role_id');
             $table->string('address');
             $table->string('tp');
+            $table->string('username');
             $table->string('password');
             $table->timestamps();
         });
