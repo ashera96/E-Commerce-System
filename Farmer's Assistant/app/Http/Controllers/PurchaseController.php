@@ -9,4 +9,8 @@ class PurchaseController extends Controller
     public function index(){
         return view('ordering');
     }
+
+    public function purchase(){
+        return view('purchases');
+    }
 }

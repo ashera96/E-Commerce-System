@@ -85,7 +85,7 @@ Route::get('/emp','EmpController@index');
 //Customer dashboard
 Route::get('/profile','customerController@index');
 Route::get('/complaint','complaintController@index');
-Route::get('/purchase','PurchaseController@index');
+Route::get('/purchase','PurchaseController@purchase');
 
 Route::get('/sendemail','SendEmailController@index');
 Route::post('/sendemail/send','SendEmailController@send');
