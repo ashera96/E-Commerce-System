@@ -22,6 +22,7 @@ class customerController extends Controller
         return view('cindex',['customers'=>$customers]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,7 +85,6 @@ class customerController extends Controller
 
 
 
-
     }
     
     public function reg(Request $request)
@@ -100,10 +100,10 @@ class customerController extends Controller
         $cnew -> tp = $request -> tp;
         $user -> email = $request -> email;
         $user_pw= $request -> password;
-        $cnew_pw= $request -> password;
+        //$cnew_pw= $request -> password;
         $user -> password = Hash::make($user_pw);
-        $cnew -> password = Hash::make($cnew_pw);
-        $cnew ->role_id=2;
+        //$cnew -> password = Hash::make($cnew_pw);
+        //$cnew ->role_id=2;
         $user ->role_id=2;
         $user -> save();
         $cnew -> save();

@@ -218,7 +218,7 @@
         {{-- <span class="logo-mini"><img src="#" width="50px" height="40px"></span> --}}
 
         <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg">Anushka</b></span>
+            <span class="logo-lg">Customer</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top">
@@ -233,7 +233,7 @@
 
                     <li class="dropdown user user-menu">
 
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user-circle-o"> Admin</i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-user-circle-o"> Anushka</i></a>
 
                         </a>
                         <ul class="dropdown-menu">
@@ -274,8 +274,8 @@
                     <img src="{{URL::asset('employee_images/admin_image.png')}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Sangit</p>
-                    <small>Developer</small>
+                    <p>Customer</p>
+                    <small>System User</small>
 
                 </div>
             </div>
