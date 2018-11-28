@@ -1,5 +1,8 @@
-function addorder(order){
-    db.collection("Orders").doc().set(order)
+function addorder(order,user){
+    db.collection("Orders").doc().set({
+        userid:user,
+        items:order
+    },{ merge: true })
     .then(function(docRef) {
        console.log("Document written with ID: ", docRef.id);
     })
@@ -60,13 +63,16 @@ function getmyorders(userid) {
                    // out=searchstock("10");
                     var row = table.insertRow(table.rows.length), i;
                    // console.log(out);
-                   row.insertCell(0).innerHTML = doc.data().crop;
-                   row.insertCell(1).innerHTML = doc.data().type;
-                   row.insertCell(2).innerHTML = doc.data().quantity;
-                   row.insertCell(3).innerHTML = doc.data().perprice;
-                   row.insertCell(4).innerHTML = doc.data().produceddate;
-                   row.insertCell(5).innerHTML = doc.data().expiredate;
-                   row.insertCell(6).innerHTML = (parseInt(doc.data().quantity))*(parseInt(doc.data().perprice));
+                   for (i in doc.order) {
+                   
+                    row.insertCell(0).innerHTML = doc.data().order[i].crop;
+                   row.insertCell(1).innerHTML = doc.data().order[i].type;
+                   row.insertCell(2).innerHTML = doc.data().order[i].quantity;
+                   row.insertCell(3).innerHTML = doc.data().order[i].price;
+                    
+                }
+                   
+                   
 
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());

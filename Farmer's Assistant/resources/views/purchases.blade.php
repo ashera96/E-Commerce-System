@@ -180,7 +180,7 @@
                     @component('components.widget')
                     @slot('title') Order details
                     @endslot
-                    @slot('description') Particular products information
+                    @slot('description') Particular order information
                     <br><br>
                     <span class="col-sm-7" id="contentInvoice">
                        
@@ -191,7 +191,7 @@
                     @slot('tableID') productsDetails
                     @endslot
                     @slot('head')
-                    <th><i class="fa fa-sort"></i> Crop</th>
+                    <th><i class="fa fa-sort"></i> Order</th>
                     <th><i class="fa fa-sort"></i> Type </th>
                     <th><i class="fa fa-sort"></i> Qty</th>
                     <th><i class="fa fa-sort"></i> Price </th>
@@ -201,7 +201,9 @@
                     <th><i class="fa fa-sort"></i> Status </th>
                    
                     
-                    <script>getmyorders()</script>
+                    <script>
+                    //passuser id 
+                    getmyorders(userid)</script>
                     
                     @endslot
                     @endcomponent
