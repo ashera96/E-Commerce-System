@@ -11,6 +11,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     
     <script>
+        var dataProduct =[];
         var dataToPush = [];
         var row;
         var Supplier_name;
@@ -105,29 +106,85 @@
     </script>
 
     <script>
-        // function getInfo(r) {
-        //     $.ajax({
-        //         url: '/view-employee/'+r,
-        //         type: 'GET',
-        //         beforeSend: function (request) {
-        //             return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-        //         },
-        //         success: function (response) {
-        //             document.getElementById("name").value = response.name;
-        //             document.getElementById("ID").value = response.id;
-        //             document.getElementById("email").value = response.email;
-        //             document.getElementById("nic").value = response.nic;
-        //             document.getElementById("address").value = response.address;
-        //             document.getElementById("contact").value = response.contact;
-        //             //document.getElementById("assigned_stock").value = response.assigned_stock;
-        //
-        //
-        //
-        //         }
-        //     });
-        //
-        // }
+        function changeDetect(r, index) {
+            var i = r.parentNode.parentNode.rowIndex;
+            if (index == 1)
+                dataProduct[i - 1].crop = document.getElementById('pName' + i).value;
+            else if (index == 2)
+                dataProduct[i - 1].type = document.getElementById('sizeInput' + i).value;
+            else if (index == 3) {
+                dataProduct[i - 1].quantity = document.getElementById('qauntityInput' + i).value;
+                document.getElementById('total' + i).innerHTML = Math.ceil(dataProduct[i - 1].quantity * dataProduct[i - 1].price);
+            } else if (index == 4) {
+                dataProduct[i - 1].price = document.getElementById('priceInput' + i).value;
+                document.getElementById('total' + i).innerHTML = Math.ceil(dataProduct[i - 1].quantity * dataProduct[i - 1].price);
 
+
+            }
+
+
+
+        }
+
+        function delete_product(r) {
+            var chk = confirm("Are You Sure to Delete This?");
+            if (chk) {
+
+                var i = r.parentNode.parentNode.rowIndex;
+                document.getElementById("hist_table").deleteRow(i);
+
+                dataProduct.splice(i - 1, 1);
+
+
+            } else {}
+        }
+
+        function addStockToCart() {
+            var crop = document.getElementById('crop_id').value;
+            var type = document.getElementById('type_id').value;
+            var quantity = document.getElementById('qty').value;
+            var price = document.getElementById('price_id').value;
+
+            if (quantity == "")
+                alert("Please specify a quantity");
+            else {
+                var order = {
+                    crop: crop,
+                    type: type,
+                    quantity: quantity,
+                    price: price
+                }
+                //console.log(order);
+                dataProduct.push(order);
+                var sizeRow = dataProduct.length;
+
+
+                var table = document.getElementById("hist_table");
+                var row = table.insertRow(-1);
+
+                var cell1 = row.insertCell(0);
+                var cell6 = row.insertCell(1);
+                var cell4 = row.insertCell(2);
+                var cell2 = row.insertCell(3);
+                var cell3 = row.insertCell(4);
+                var s = '<button class="btn btn-danger btn-sm" onclick="delete_product(this);"><i class="fa fa-trash-o"></i></button>'
+
+                var cell5 = row.insertCell(5);
+                cell1.innerHTML = "<input type='text'  onkeyup='changeDetect(this,1)' id='pName" + sizeRow + "' value='" + crop + "' style='width:100%';>";
+                cell6.innerHTML = "<input type='text'  onkeyup='changeDetect(this,2)' id='sizeInput" + sizeRow + "' value='" + type + "' style='width:70%'>";
+                cell4.innerHTML = "<input type='number'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='qauntityInput" + sizeRow + "' value='" + quantity + "' style='width:70%'>";
+                cell3.innerHTML = "<p id='total" + sizeRow + "'>" + Math.ceil(quantity * price) + "<p>";
+                cell5.innerHTML = s;
+                cell2.innerHTML = "<input type='number'  onkeyup='changeDetect(this,4)' onclick='changeDetect(this,3)' id='priceInput" + sizeRow + "' value='" + price + "' style='width:70%;'>";
+                document.getElementById('crop_id').value = "";
+                document.getElementById('type_id').value = "";
+                document.getElementById('qty').value = "";
+                document.getElementById('price_id').value = "";
+            }
+
+
+
+        }
 
 
 
@@ -230,7 +287,7 @@
                         <td><label class="control-label">Quantity in kg:</label></td>
 
 
-                        <td><input type="number" onkeyup="calculatePayment()" name="newpaid" id="amountpaidNew"/></td>
+                        <td><input type="number" name="newpaid" id="qty"/></td>
 
                     </tr>
 
@@ -240,7 +297,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="payToSupplyer();">Pay</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addStockToCart();">Add</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -258,23 +315,10 @@
                             <h3 class="widget-user-username">Cart</h3>
                             <h5 class="widget-user-desc">Stock invoice history</h5>
                             <span class="col-sm-4">
-                             <p class="alert" style="color:black; border:1px solid black;">ID:
-                            <label id="display_box" class="label" style="font-size:13px; color:red;border:1px solid black; border-radious: 10/8px;"> 0 </label>
+                             <p class="alert text-center" style="color:black; border:1px solid black;">ID:
+                            <label id="display_box" class="label" style="font-size:13px; color:red;; border-radious: 10/8px;"> 0 </label>
 
                               <br>
-                              <br>
-
-
-                            <label class="text-danger" style="font-size:13px;">Supplyer: </label>
-                            <label id="display_supplyer" class="label" style="font-size:13px; color:black; "> Not selected </label>
-                            <br>
-                              <label class="text-danger" style="font-size:13px;">Brand: </label>
-                            <label id="display_brand" class="label" style="font-size:13px; color:black; "> Not selected </label>
-                           <br>
-
-                            <label class="text-danger" style="font-size:13px;">Style: </label>
-                            <label id="display_style" class="label" style="font-size:13px; color:black;border: black 1px solid;border-radius: 10/8px; "> None </label>
-
 
                              </p></span>
 
