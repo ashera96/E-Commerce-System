@@ -294,7 +294,7 @@
                     </a>
                         <ul class="treeview-menu">
                             <li><a href="{{URL::to('/add-stock')}}"><i class="fa fa-clone"></i> Add stock</a></li>
-                            <li><a href="{{URL::to('/stock-manage')}}"><i class="fa fa-leaf"></i> Manage stock</a></li>
+                            <li><a href="{{URL::to('/stock-manage')}}"><i class="fa fa-leaf"></i> View stock</a></li>
                         </ul>
                     </li>
 
