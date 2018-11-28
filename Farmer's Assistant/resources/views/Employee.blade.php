@@ -16,7 +16,7 @@
                     document.getElementById("nic").value = response.nic;
                     document.getElementById("address").value = response.address;
                     document.getElementById("contact").value = response.contact;
-                    document.getElementById("assigned_stock").value = response.assigned_stock;
+                    //document.getElementById("assigned_stock").value = response.assigned_stock;
 
 
 
