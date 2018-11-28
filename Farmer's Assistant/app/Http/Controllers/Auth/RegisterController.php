@@ -84,6 +84,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'address' => $data['address'],
             'tp' => $data['tp'],
+            //'username' =>$data['username'],
             'id' => $user->id, //using the systemUser table id 
         ]);
 

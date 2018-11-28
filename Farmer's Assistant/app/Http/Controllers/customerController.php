@@ -57,7 +57,7 @@ class customerController extends Controller
 
 
 
-        $cnew = new customer;
+         $cnew = new customer;
          $user = new User;
          $cnew -> firstname = $request -> firstname;
          $cnew -> email = $request -> email;
@@ -98,6 +98,8 @@ class customerController extends Controller
         $cnew -> email = $request -> email;
         $cnew -> address = $request -> address;
         $cnew -> tp = $request -> tp;
+        $cnew -> username =$request ->username;
+        $cnew -> password =$request ->password;
         $user -> email = $request -> email;
         $user_pw= $request -> password;
         //$cnew_pw= $request -> password;
