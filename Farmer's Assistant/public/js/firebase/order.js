@@ -50,7 +50,10 @@ function addtocart() {
 
     docRef.get().then(function(doc) {
         if (doc.exists) {
-            //get the data by using doc.data().whatevertheattribute u want eg: doc.data().perprice for price 
+            //get the data by using doc.data().whatevertheattribute u want eg: doc.data().perprice 
+            var data=doc.data();
+            
+            
             console.log("Document data:", doc.data());
         } else {
             // doc.data() will be undefined in this case
@@ -59,7 +62,7 @@ function addtocart() {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
-    var crop = doc.data().crop;
+    var crop = data.crop;
     var type = doc.data().type;
     var price = doc.data().perprice;
     alert(crop);
