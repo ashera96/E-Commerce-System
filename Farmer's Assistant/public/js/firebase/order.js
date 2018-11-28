@@ -43,18 +43,15 @@ function getallstocks(){
     
 }
 
-
-
-function addtocart() {
+function getfromid(id) {
     var docRef = db.collection("stock").doc(id);
-
+    var data;
     docRef.get().then(function(doc) {
         if (doc.exists) {
             //get the data by using doc.data().whatevertheattribute u want eg: doc.data().perprice 
             var data=doc.data();
-            
-            
-            console.log("Document data:", doc.data());
+            return data;
+            //console.log("Document data:", doc.data());
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -62,9 +59,13 @@ function addtocart() {
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
+}
+
+function addtocart(id) {
+    var data=getfromid(id);
     var crop = data.crop;
-    var type = doc.data().type;
-    var price = doc.data().perprice;
+    var type = data.type;
+    var price =data.perprice;
     alert(crop);
     alert(type);
     alert(price);
