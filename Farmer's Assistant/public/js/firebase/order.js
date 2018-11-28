@@ -48,3 +48,67 @@ function getorders(id){
 
 }
 
+function addtocart() {
+    var crop = doc.data().crop;
+    var type = doc.data().type;
+    var price = doc.data().perprice;
+    alert(crop);
+    alert(type);
+    alert(price);
+    alert("H");
+    var productName = document.getElementById('product').value;
+    var size = document.getElementById('size').value;
+    var quantity = document.getElementById('qty').value;
+    var color = document.getElementById('color').value;
+
+    var price = document.getElementById('price').value;
+
+    if (alertBrand == -1)
+        alert("Brand not selected");
+    else if (product == "" || size == "" || quantity == "" || price == "")
+        alert("Please all the data in input box!");
+    else if (Style == -1)
+        alert("Select Style");
+    else {
+        var product = {
+            product: productName,
+            size: size,
+            color: color,
+            quantity: quantity,
+            price: price,
+            style: Style,
+            Brand: BrandID
+        }
+        //console.log(product);
+        dataProduct.push(product);
+        var sizeRow = dataProduct.length;
+
+
+        var table = document.getElementById("hist_table");
+
+        var row = table.insertRow(-1);
+
+        var cell1 = row.insertCell(0);
+        var cell6 = row.insertCell(1);
+        var cell4 = row.insertCell(2);
+        var cell2 = row.insertCell(3);
+        var cell3 = row.insertCell(4);
+        var s = '<button class="btn btn-danger btn-sm" onclick="delete_product(this);"><i class="fa fa-trash-o"></i></button>'
+
+        var cell5 = row.insertCell(5);
+        cell1.innerHTML = "<input type='text'  onkeyup='changeDetect(this,1)' id='pName" + sizeRow + "' value='" + productName + "' style='width:100%';>";
+        cell6.innerHTML = "<input type='text'  onkeyup='changeDetect(this,2)' id='sizeInput" + sizeRow + "' value='" + size + "' style='width:70%'>";
+        cell4.innerHTML = "<input type='number'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='qauntityInput" + sizeRow + "' value='" + quantity + "' style='width:70%'>";
+        cell3.innerHTML = "<p id='total" + sizeRow + "'>" + Math.ceil(quantity * price) + "<p>";
+        cell5.innerHTML = s;
+        cell2.innerHTML = "<input type='number'  onkeyup='changeDetect(this,4)' onclick='changeDetect(this,3)' id='priceInput" + sizeRow + "' value='" + price + "' style='width:70%;'>";
+        document.getElementById('product').value = "";
+        document.getElementById('size').value = "";
+        document.getElementById('qty').value = "";
+        document.getElementById('price').value = "";
+    }
+
+
+
+}
+

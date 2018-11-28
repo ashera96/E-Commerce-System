@@ -128,62 +128,7 @@
         //
         // }
 
-        function addData() {
-            var productName = document.getElementById('product').value;
-            var size = document.getElementById('size').value;
-            var quantity = document.getElementById('qty').value;
-            var color = document.getElementById('color').value;
 
-            var price = document.getElementById('price').value;
-
-            if (alertBrand == -1)
-                alert("Brand not selected");
-            else if (product == "" || size == "" || quantity == "" || price == "")
-                alert("Please all the data in input box!");
-            else if (Style == -1)
-                alert("Select Style");
-            else {
-                var product = {
-                    product: productName,
-                    size: size,
-                    color: color,
-                    quantity: quantity,
-                    price: price,
-                    style: Style,
-                    Brand: BrandID
-                }
-                //console.log(product);
-                dataProduct.push(product);
-                var sizeRow = dataProduct.length;
-
-
-                var table = document.getElementById("hist_table");
-
-                var row = table.insertRow(-1);
-
-                var cell1 = row.insertCell(0);
-                var cell6 = row.insertCell(1);
-                var cell4 = row.insertCell(2);
-                var cell2 = row.insertCell(3);
-                var cell3 = row.insertCell(4);
-                var s = '<button class="btn btn-danger btn-sm" onclick="delete_product(this);"><i class="fa fa-trash-o"></i></button>'
-
-                var cell5 = row.insertCell(5);
-                cell1.innerHTML = "<input type='text'  onkeyup='changeDetect(this,1)' id='pName" + sizeRow + "' value='" + productName + "' style='width:100%';>";
-                cell6.innerHTML = "<input type='text'  onkeyup='changeDetect(this,2)' id='sizeInput" + sizeRow + "' value='" + size + "' style='width:70%'>";
-                cell4.innerHTML = "<input type='number'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='qauntityInput" + sizeRow + "' value='" + quantity + "' style='width:70%'>";
-                cell3.innerHTML = "<p id='total" + sizeRow + "'>" + Math.ceil(quantity * price) + "<p>";
-                cell5.innerHTML = s;
-                cell2.innerHTML = "<input type='number'  onkeyup='changeDetect(this,4)' onclick='changeDetect(this,3)' id='priceInput" + sizeRow + "' value='" + price + "' style='width:70%;'>";
-                document.getElementById('product').value = "";
-                document.getElementById('size').value = "";
-                document.getElementById('qty').value = "";
-                document.getElementById('price').value = "";
-            }
-
-
-
-        }
 
 
     </script>
@@ -258,60 +203,36 @@
                     <tbody>
                     <tr>
                         <td></td>
-                        <td>Invoice ID</td>
+                        <td>Crop</td>
 
 
-                        <td><input type="number" name="ID" id="IDinvoice"/></td>
-
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Total</td>
-
-
-                        <td><input type="number" name="amount" id="amountBAL"/></td>
+                        <td><input type="text" name="ID" id="crop_id" disabled/></td>
 
                     </tr>
                     <tr>
                         <td></td>
-                        <td>Paid</td>
+                        <td>Type</td>
 
 
-                        <td><input type="number" name="paid" id="amountpaid"/></td>
+                        <td><input type="text" name="amount" id="type_id" disabled/></td>
 
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label class="control-label">New paid:</label></td>
+                        <td>Price per kg</td>
+
+
+                        <td><input type="number" name="paid" id="price_id" disabled/></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label class="control-label">Quantity in kg:</label></td>
 
 
                         <td><input type="number" onkeyup="calculatePayment()" name="newpaid" id="amountpaidNew"/></td>
 
                     </tr>
-                    <tr>
-                        <td></td>
-                        <td><label class="control-label">Payment:</label></td>
-                        <td> <select class="form-control select2" id="paymentMethod" style="width: 50%">
-                                <?php
-                                $method= \App\PaymentMethod::all()->where('publication_status',1);
-                                foreach($method as $value)
-                                {
-                                ?>
-                                <option value="{{$value->ID}}">{{$value->Type}}</option>
-                                <?php } ?>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><label class="control-label">Remarks:</label></td>
-
-
-                        <td><textarea name="remarks" id="remarks"> </textarea></td>
-
-                    </tr>
-
-
 
                     </tbody>
 
@@ -365,8 +286,8 @@
                                 <thead>
                                 <tr>
 
-                                    <th><i class="fa fa-sort"></i> Product </th>
-                                    <th><i class="fa fa-sort"></i> Size </th>
+                                    <th><i class="fa fa-sort"></i> Crop </th>
+                                    <th><i class="fa fa-sort"></i> Type </th>
                                     <th><i class="fa fa-sort"></i> Qty.</th>
                                     <th><i class="fa fa-sort"></i> Price</th>
                                     <th><i class="fa fa-sort"></i> Total price</th>
