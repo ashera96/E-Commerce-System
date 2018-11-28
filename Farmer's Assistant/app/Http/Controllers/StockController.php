@@ -73,14 +73,6 @@ class StockController extends Controller
         DB::table('purchase')->insert($data2);
 
 
-        $supplyerID = $input['data1'][$max-1]['supplyer'];
-
-
-
-
-        $supplyerB = Supplyer::find($supplyerID);
-        $supplyer = Supplyer::where('id', $supplyerID)
-            ->update(['total_balance' => $supplyerB->total_balance+ $totalPrice]);
 
 
         Session::put('message', 'Purchase Successfully !');

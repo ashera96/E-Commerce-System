@@ -118,12 +118,7 @@
             } else if (index == 4) {
                 dataProduct[i - 1].price = document.getElementById('priceInput' + i).value;
                 document.getElementById('total' + i).innerHTML = Math.ceil(dataProduct[i - 1].quantity * dataProduct[i - 1].price);
-
-
             }
-
-
-
         }
 
         function delete_product(r) {
@@ -170,12 +165,12 @@
                 var s = '<button class="btn btn-danger btn-sm" onclick="delete_product(this);"><i class="fa fa-trash-o"></i></button>'
 
                 var cell5 = row.insertCell(5);
-                cell1.innerHTML = "<input type='text'  onkeyup='changeDetect(this,1)' id='pName" + sizeRow + "' value='" + crop + "' style='width:100%';>";
-                cell6.innerHTML = "<input type='text'  onkeyup='changeDetect(this,2)' id='sizeInput" + sizeRow + "' value='" + type + "' style='width:70%'>";
+                cell1.innerHTML = "<input type='text'  disabled onkeyup='changeDetect(this,1)' id='pName" + sizeRow + "' value='" + crop + "' style='width:100%';>";
+                cell6.innerHTML = "<input type='text'  disabled onkeyup='changeDetect(this,2)' id='sizeInput" + sizeRow + "' value='" + type + "' style='width:70%'>";
                 cell4.innerHTML = "<input type='number'  onkeyup='changeDetect(this,3)' onclick='changeDetect(this,3)' id='qauntityInput" + sizeRow + "' value='" + quantity + "' style='width:70%'>";
                 cell3.innerHTML = "<p id='total" + sizeRow + "'>" + Math.ceil(quantity * price) + "<p>";
                 cell5.innerHTML = s;
-                cell2.innerHTML = "<input type='number'  onkeyup='changeDetect(this,4)' onclick='changeDetect(this,3)' id='priceInput" + sizeRow + "' value='" + price + "' style='width:70%;'>";
+                cell2.innerHTML = "<input type='number' disabled  onkeyup='changeDetect(this,4)' onclick='changeDetect(this,3)' id='priceInput" + sizeRow + "' value='" + price + "' style='width:70%;'>";
                 document.getElementById('crop_id').value = "";
                 document.getElementById('type_id').value = "";
                 document.getElementById('qty').value = "";
@@ -186,9 +181,54 @@
 
         }
 
+        function saveStockData() {
+
+            if (dataProduct.length == 0)
+                alert("Please add some product to save data.");
+            else {
+                var chk = confirm("Are you sure to save all the data in the cart ?");
+
+                if (chk) {
+                    var dataImp = {
+                        boxID: 5005,
+                    }
+                    dataProduct.push(dataImp);
+                    //Dp.boxID
+                    //console.log(dataProduct);
+
+                    $.ajax({
+                        data: {
+                            data1: dataProduct
+                        },
+                        url: '/save-order',
+                        type: 'POST',
+
+                        beforeSend: function(request) {
+                            return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+                        },
+                        success: function(response) {
+                            // console.log(response);
+                            window.location = "/ordering";
+                        }
+                    });
+                }
+            }
+
+        }
+
 
 
     </script>
+
+@if (session('message'))
+    <div class="alert alert-success">
+        {{ session('message') }}
+    </div>
+@endif
+<?php
+echo Session::put('message','');
+
+?>
 
     @if (session('message'))
     <div class="alert alert-success">
@@ -314,13 +354,13 @@
 
                             <h3 class="widget-user-username">Cart</h3>
                             <h5 class="widget-user-desc">Stock invoice history</h5>
-                            <span class="col-sm-4">
-                             <p class="alert text-center" style="color:black; border:1px solid black;">ID:
-                            <label id="display_box" class="label" style="font-size:13px; color:red;; border-radious: 10/8px;"> 0 </label>
+                            {{--<span class="col-sm-4">--}}
+                             {{--<p class="alert text-center" style="color:black; border:1px solid black;">ID:--}}
+                            {{--<label id="display_box" class="label" style="font-size:13px; color:red;; border-radious: 10/8px;"> 0 </label>--}}
 
-                              <br>
+                              {{--<br>--}}
 
-                             </p></span>
+                             {{--</p></span>--}}
 
 
                         </div>
