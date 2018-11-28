@@ -16,6 +16,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/everythingSangitCSS.css')}}">
 
+    
+
     <style>
         #snackbar {
             visibility: hidden;

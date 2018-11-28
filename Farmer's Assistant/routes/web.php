@@ -129,3 +129,6 @@ Route::get('/contactUs','customerController@showContactUs')->name('contactus');
 Route::post('/contactUs','ContactUsController@submit')->name('contactUs');
 
 Route::get('/contactUs/sendEmail', 'ContactUsController@submit');
+
+//Payment handling section
+Route::post('/charge', 'CheckoutController@charge');

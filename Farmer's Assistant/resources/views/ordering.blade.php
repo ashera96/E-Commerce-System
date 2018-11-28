@@ -106,6 +106,8 @@
     </script>
 
     <script>
+        var order_total = 0;
+
         function changeDetect(r, index) {
             var i = r.parentNode.parentNode.rowIndex;
             if (index == 1)
@@ -184,39 +186,24 @@
 
         function saveStockData() {
 
-            if (dataProduct.length == 0)
+            if (dataProduct.length == 0) {
                 alert("Please add some product to save data.");
+                //location.reload();
+                window.location = "/ordering";
+            }
             else {
-                var chk = confirm("Are you sure to save all the data in the cart ?");
+                var chk = confirm("Confirm the order?");
 
-                if (chk) {
-                    var dataImp = {
-                        boxID: 5005,
-                    }
-                    dataProduct.push(dataImp);
-                    //Dp.boxID
-                    //console.log(dataProduct);
-
-                    $.ajax({
-                        data: {
-                            data1: dataProduct
-                        },
-                        url: '/save-order',
-                        type: 'POST',
-
-                        beforeSend: function(request) {
-                            return request.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
-                        },
-                        success: function(response) {
-                            // console.log(response);
-                            window.location = "/ordering";
-                        }
-                    });
+                // Calculating the order total for the payment
+                for (var i in dataProduct) {
+                    order_total += dataProduct[i].price * dataProduct[i].quantity;
                 }
+                document.getElementById('payment_total').value = order_total;
+
             }
 
-        }
 
+        }
 
 
     </script>
@@ -355,13 +342,6 @@ echo Session::put('message','');
 
                             <h3 class="widget-user-username">Cart</h3>
                             <h5 class="widget-user-desc">Stock invoice history</h5>
-                            {{--<span class="col-sm-4">--}}
-                             {{--<p class="alert text-center" style="color:black; border:1px solid black;">ID:--}}
-                            {{--<label id="display_box" class="label" style="font-size:13px; color:red;; border-radious: 10/8px;"> 0 </label>--}}
-
-                              {{--<br>--}}
-
-                             {{--</p></span>--}}
 
 
                         </div>
@@ -387,8 +367,7 @@ echo Session::put('message','');
 
                             </table>
                             <br>
-                            <button class="btn btn-sm btn-danger" onclick="saveStockData()">Save all data</button>
-
+                            <button class="btn btn-sm btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#checkout" onclick="saveStockData()" type="button">Checkout</button>
 
                         </div>
                         <!-- /.box-body -->
@@ -396,6 +375,44 @@ echo Session::put('message','');
                     <!-- /.box -->
                 </div>
             </div>
+
+
+<!-- /.modal -->
+<div class="modal fade" id="checkout">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirm Checkout</h4>
+            </div>
+            <div class="row text-center">
+                <h4>Order Total</h4>
+                <input type="text" name="ID" id="payment_total" disabled/>
+            </div>
+            <div class="modal-body">
+                <form action="/charge" method="POST">
+                    {{ csrf_field() }}
+                    <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="{{ env('STRIPE_PUB_KEY') }}"
+                    data-amount="1999"
+                    data-name="Order Checkout"
+                    data-description="Payment for the order using Stripe"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                    data-locale="auto"
+                    data-currency="usd">
+                    </script>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
             
 

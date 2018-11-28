@@ -27,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel" >
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand navcolor" href="{{ url('/') }}">
                     E-Commerce
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -41,14 +41,14 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto rLinks">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li>
+                                <a class="nav-link navcolor active" href="{{ route('login') }}">{{ __('Login') }}&nbsp;</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <li>
+                                <a class="nav-link navcolor"  href="{{ route('register') }}">&nbsp;{{ __('Register') }}</a>
                             </li>
                         @else
                     
@@ -84,3 +84,33 @@
 </body>
 
 </html>
+
+<style>
+    ul{
+        list-style-type: none;
+    }
+
+    /* body{
+        background-image: url('/image/back.jpeg');
+    } */
+
+    html { 
+        background: url('/image/back.jpeg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body{
+        background-color: transparent;
+    }
+
+    .navbar-nav {
+        float: right !important;
+    }
+    .navcolor{
+        color: #092947;
+        text-decoration: none;
+    }
+</style>
