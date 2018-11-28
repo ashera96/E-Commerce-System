@@ -111,6 +111,11 @@ Route::get('/login_Registration', function() {
 
 });
 
+Route::get('/logO', function() {
+    return view('auth.login');
+
+});
+
 Route::get('statistics',[
     'as'=>'get_statistics',
     'uses'=>'PagesController@statistics'

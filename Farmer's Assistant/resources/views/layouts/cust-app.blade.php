@@ -243,7 +243,7 @@
 
                                 <p>
                                     Anushka
-                                    <small>Logout</small>
+                                    <small><a  href="/logO">Logout</a></small>
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -323,6 +323,15 @@
                     </a>
                 </li>
 
+
+                <li>
+                    <a href="{{URL::to('/contactUs')}}">
+                        <i class="fa fa-cogs"></i>
+                        <span>ContactUs</span>
+                        <span class="pull-right-container">
+                        </span>
+                    </a>
+                </li>
 
 
             </ul>

@@ -24,11 +24,15 @@
         <br>
         <div class="form-group row" style="margin-left: 250px">
             <div class="col-md-8">
-                <input id="name" type="text"  class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus />
+                <input id="name" type="text"  class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="Name" name="Name" value="{{ old('name') }}" required autofocus />
                 <br>
             </div>
             <div class="col-md-8">
-                <input id="email" type="text"  class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="e-mail" name="e-mail" value="{{ old('email') }}" required autofocus />
+                <input id="user_name" type="text"  class="form-control{{ $errors->has('user_name') ? ' is-invalid' : '' }}" placeholder="User Name" name="user_name" value="{{ old('user_name') }}" required autofocus />
+                <br>
+            </div>
+            <div class="col-md-8">
+                <input id="email" type="text"  class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="e-mail" name="e_mail" value="{{ old('email') }}" required autofocus />
                 <br>
             </div>
             <div class="col-md-8">
