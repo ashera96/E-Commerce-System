@@ -4,7 +4,7 @@ function addorder(order,user){
         items:order
     },{ merge: true })
     .then(function(docRef) {
-       console.log("Document written with ID: ", docRef.id);
+       //console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -49,7 +49,7 @@ function getallstocks(){
 
 function getmyorders(userid) {
     //var id= document.getElementById('pid').value
-    db.collection("orders").where("uid", "==", userid)
+    db.collection("orders").where("uid", "==", "userid")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {

@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
-    @if (session('message'))
+    <!--@if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
@@ -20,7 +20,7 @@
     @endif
     <?php
     echo Session::put('info','');
-    ?>
+    ?>  -->
 
     <div class="container" style="width: 1000px">
         <div class = "card-panel cyan darken-4"  ><h3 style="text-align: center;color: white">Add New Customer</h3></div>
