@@ -49,7 +49,7 @@ function getallstocks(){
 
 function getmyorders(userid) {
     //var id= document.getElementById('pid').value
-    db.collection("orders").where("uid", "==", userid)
+    db.collection("orders").where("uid", "==", "userid")
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {

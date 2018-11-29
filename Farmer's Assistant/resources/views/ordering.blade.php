@@ -151,7 +151,7 @@
                     quantity: quantity,
                     price: price
                 }
-                addorder(order,user);//pass user id here
+                addorder(order,"user");//pass user id here
                 //console.log(order);
                 dataProduct.push(order);
                 var sizeRow = dataProduct.length;
