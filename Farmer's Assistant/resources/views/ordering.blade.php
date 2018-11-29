@@ -151,7 +151,7 @@
                     quantity: quantity,
                     price: price
                 }
-                addorder(order,user);//pass user id here
+                addorder(order,"user");//pass user id here
                 //console.log(order);
                 dataProduct.push(order);
                 var sizeRow = dataProduct.length;
@@ -396,7 +396,7 @@ echo Session::put('message','');
                     <script
                     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                     data-key="{{ env('STRIPE_PUB_KEY') }}"
-                    data-amount="1999"
+                    data-amount="805000"
                     data-name="Order Checkout"
                     data-description="Payment for the order using Stripe"
                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
