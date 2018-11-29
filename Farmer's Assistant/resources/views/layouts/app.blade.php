@@ -336,18 +336,7 @@
                         </a>
                     </li>
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-tint"></i>
-                            <span> Supplyers</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{URL::to('/supplyer')}}"><i class="fa fa-clone"></i> Manage supplyers</a></li>
-                            <li><a href="{{URL::to('/supplyerPayment')}}"><i class="fa fa-money"></i> Payment</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
 
             </section>

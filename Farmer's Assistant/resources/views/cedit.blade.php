@@ -18,9 +18,7 @@
                             <i class="material-icons prefix">account_circle</i>
                             <input id="firstname" type="text" class="validate" name="firstname" value="{{ $customer->firstname }}">
                             <label for="firstname">First Name</label>
-                            @if($errors->has('firstname'))
-                                <span class="form-text invalid-feedback" style="color: red">{{$errors->first('firstname')}}</span>
-                            @endif
+
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">account_circle</i>
